@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+/*
+ * Vietnamese editorial fashion + modern fashion app + premium minimal UI
+ * Color System:
+ * --bg: #FBF8F3
+ * --surface: #FFFFFF
+ * --sand: #F1EADF
+ * --sand-2: #E6DCCD
+ * --line: #E6DCCD
+ * --line-2: #D8CCBA
+ * --ink: #1F1B18
+ * --muted: #736960
+ * --primary: #1F1B18
+ * --indigo: #2E4A6B
+ * --indigo-soft: #E6ECF3
+ * --sage: #4F7350
+ * --sage-soft: #E5EDE2
+ * --warn: #8A5E17
+ * --warn-soft: #F6ECDA
+ */
+@theme {
+  --font-sans: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", "Be Vietnam Pro", ui-serif, Georgia, serif;
+
+  --color-bg: #FBF8F3;
+  --color-surface: #FFFFFF;
+  --color-sand: #F1EADF;
+  --color-sand-2: #E6DCCD;
+  --color-line: #E6DCCD;
+  --color-line-2: #D8CCBA;
+  --color-ink: #1F1B18;
+  --color-muted: #736960;
+  --color-primary: #1F1B18;
+  --color-indigo: #2E4A6B;
+  --color-indigo-soft: #E6ECF3;
+  --color-sage: #4F7350;
+  --color-sage-soft: #E5EDE2;
+  --color-warn: #8A5E17;
+  --color-warn-soft: #F6ECDA;
+  --color-son: #8B1E2B;
+  --color-son-soft: #F9EBEA;
+
+  --animate-rise: rise 420ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-stamp: stamp 520ms cubic-bezier(0.2, 0.9, 0.25, 1.2) both;
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes stamp {
+    0% { opacity: 0; transform: scale(1.35) rotate(-10deg); }
+    70% { opacity: 1; transform: scale(0.96) rotate(-5deg); }
+    100% { opacity: 1; transform: scale(1) rotate(-6deg); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: #FBF8F3;
+    color: #1F1B18;
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01";
+    margin: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+    color: #1F1B18;
+    font-family: var(--font-serif);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :where(button, a, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid #1F1B18;
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  ::selection {
+    background: #E6DCCD;
+    color: #1F1B18;
+  }
+}
+
+@layer components {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .press {
+    transition: transform 160ms ease, background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+  }
+
+  .press:not(:disabled):active {
+    transform: translateY(1px) scale(0.985);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
